@@ -1,0 +1,7 @@
+{
+  "name": "Concesionaria Premium",
+  "description": "Una aplicación web moderna para una concesionaria de autos, que incluye catálogo de vehículos, filtros avanzados y panel de administración.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
