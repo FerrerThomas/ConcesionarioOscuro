@@ -4,7 +4,7 @@ import { VEHICLES } from '../constants';
 import VehicleCard from '../components/VehicleCard';
 
 const Vehicles: React.FC = () => {
-  const [showFilters, setShowFilters] = useState(true);
+  const [showFilters, setShowFilters] = useState(window.innerWidth >= 1024);
 
   return (
     <div className="flex flex-col w-full min-h-screen">
@@ -23,7 +23,7 @@ const Vehicles: React.FC = () => {
               <span className="material-symbols-outlined text-primary">filter_list</span>
               <h3 className="text-xl font-bold">Filtrar por</h3>
             </div>
-            
+
             <div className="space-y-8">
               <div>
                 <p className="font-bold text-text-light mb-4 text-xs uppercase tracking-[0.2em]">Condición</p>
@@ -82,14 +82,14 @@ const Vehicles: React.FC = () => {
               <span className="text-text-light font-black text-xl">{VEHICLES.length}</span> vehículos encontrados
             </p>
             <div className="flex items-center gap-4">
-               <button 
+              <button
                 onClick={() => setShowFilters(!showFilters)}
                 className="lg:hidden flex items-center gap-2 bg-charcoal-dark border border-charcoal-light px-4 py-2 rounded-lg text-sm"
-               >
-                 <span className="material-symbols-outlined text-[20px]">tune</span>
-                 Filtros
-               </button>
-               <div className="flex items-center gap-2">
+              >
+                <span className="material-symbols-outlined text-[20px]">tune</span>
+                Filtros
+              </button>
+              <div className="flex items-center gap-2">
                 <span className="text-text-dark text-sm hidden sm:inline">Ordenar por:</span>
                 <select className="bg-charcoal-dark border border-charcoal-light rounded-xl text-text-light py-2 px-4 focus:ring-1 focus:ring-primary text-sm">
                   <option>Más recientes</option>

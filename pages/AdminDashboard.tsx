@@ -1,12 +1,24 @@
 
-import React from 'react';
+
+import React, { useState } from 'react';
 import { VEHICLES } from '../constants';
 
 const AdminDashboard: React.FC = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   return (
     <div className="flex h-screen bg-background-dark overflow-hidden">
       {/* Sidebar Nav */}
-      <aside className="w-64 bg-charcoal-dark border-r border-charcoal-light flex flex-col shrink-0">
+      {/* Sidebar Nav - Desktop & Mobile Overlay */}
+      {isSidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+      <aside className={`
+        fixed lg:static inset-y-0 left-0 z-50 w-64 bg-charcoal-dark border-r border-charcoal-light flex flex-col shrink-0 transition-transform duration-300
+        ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+      `}>
         <div className="h-20 flex items-center px-8 border-b border-charcoal-light">
           <div className="flex items-center gap-3">
             <span className="material-symbols-outlined text-primary text-3xl">directions_car</span>
@@ -37,10 +49,18 @@ const AdminDashboard: React.FC = () => {
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col overflow-hidden">
-        <header className="h-20 bg-charcoal-dark border-b border-charcoal-light flex items-center justify-between px-10 shrink-0">
-          <h1 className="text-xl font-black">Inventario de Vehículos</h1>
+        <header className="h-20 bg-charcoal-dark border-b border-charcoal-light flex items-center justify-between px-4 md:px-10 shrink-0">
+          <div className="flex items-center gap-4">
+            <button
+              className="lg:hidden p-2 -ml-2 text-text-light hover:bg-charcoal-medium rounded-lg"
+              onClick={() => setIsSidebarOpen(true)}
+            >
+              <span className="material-symbols-outlined">menu</span>
+            </button>
+            <h1 className="text-xl font-black truncate">Inventario</h1>
+          </div>
           <div className="flex items-center gap-6">
-             <div className="relative hidden sm:block">
+            <div className="relative hidden sm:block">
               <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-dark text-[20px]">search</span>
               <input type="text" placeholder="Buscar ID, Modelo..." className="bg-charcoal-medium border-none text-sm rounded-full pl-10 pr-6 py-2.5 w-72 focus:ring-1 focus:ring-primary" />
             </div>

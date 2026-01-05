@@ -12,22 +12,22 @@ const Home: React.FC = () => {
     <div className="flex flex-col w-full">
       {/* Hero Section - Estilo Mustang Original */}
       <section className="relative w-full min-h-[550px] flex flex-col items-center justify-center text-center px-4 overflow-hidden rounded-b-[40px] md:rounded-b-[80px]">
-        <div 
-          className="absolute inset-0 bg-cover bg-center z-0" 
+        <div
+          className="absolute inset-0 bg-cover bg-center z-0"
           style={{
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.8) 100%), url("https://images.unsplash.com/photo-1584345604476-8ec5e12e42dd?auto=format&fit=crop&q=80&w=2000")`
           }}
         />
         <div className="relative z-10 max-w-4xl flex flex-col gap-8 items-center mt-12">
           <div className="flex flex-col gap-4">
-            <h1 className="text-text-light text-5xl md:text-7xl font-black leading-[1.1] tracking-tighter drop-shadow-2xl px-2">
+            <h1 className="text-text-light text-4xl sm:text-5xl md:text-7xl font-black leading-[1.1] tracking-tighter drop-shadow-2xl px-2">
               Encontrá tu próximo auto hoy
             </h1>
             <p className="text-text-medium text-lg md:text-xl max-w-2xl mx-auto font-medium opacity-90">
               La mejor selección de 0km y usados seleccionados con garantía de confianza.
             </p>
           </div>
-          
+
           <div className="flex flex-wrap gap-5 justify-center mt-4">
             <Link to="/vehiculos" className="bg-primary hover:bg-red-700 text-white font-bold py-4 px-10 rounded-xl transition-all hover:scale-105 shadow-2xl shadow-primary/40 text-sm uppercase tracking-widest">
               Ver Stock Usados
@@ -141,42 +141,42 @@ const Home: React.FC = () => {
               </button>
             </form>
           </div>
-          
+
           <div className="lg:w-[400px] bg-charcoal-light relative min-h-[450px] flex flex-col">
             <div className="flex-1 w-full overflow-hidden">
-              <iframe 
+              <iframe
                 title="Ubicación Concesionaria"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13149.337449553743!2d-58.5030612!3d-34.4601445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb0492576b251%3A0x8e83161099e285a8!2sAv.%20del%20Libertador%2014500%2C%20B1640%20Mart%C3%ADnez%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1710000000000!5m2!1ses-419!2sar" 
-                width="100%" 
-                height="100%" 
-                style={{ border: 0, filter: 'grayscale(1) contrast(1.2) invert(0.9)' }} 
-                allowFullScreen={true} 
-                loading="lazy" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13149.337449553743!2d-58.5030612!3d-34.4601445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb0492576b251%3A0x8e83161099e285a8!2sAv.%20del%20Libertador%2014500%2C%20B1640%20Mart%C3%ADnez%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1710000000000!5m2!1ses-419!2sar"
+                width="100%"
+                height="100%"
+                style={{ border: 0, filter: 'grayscale(1) contrast(1.2) invert(0.9)' }}
+                allowFullScreen={true}
+                loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
             <div className="p-10 bg-charcoal-dark/95 backdrop-blur-md border-t border-charcoal-medium">
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <span className="material-symbols-outlined text-primary text-2xl">location_on</span>
-                    <div>
-                      <p className="font-black text-lg">Casa Central</p>
-                      <p className="text-text-dark text-sm leading-relaxed">Av. del Libertador 14500, San Isidro, Buenos Aires</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <span className="material-symbols-outlined text-primary text-2xl">call</span>
-                    <div>
-                       <p className="text-text-dark text-xs font-bold uppercase tracking-widest">Llamanos gratis</p>
-                       <p className="font-black text-lg">0800-555-AUTO</p>
-                    </div>
-                  </div>
-                  <div className="pt-2">
-                    <button className="w-full bg-white/5 hover:bg-white/10 text-white font-bold py-3 rounded-xl border border-white/10 transition-colors text-sm">
-                      Ver todas las sucursales
-                    </button>
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <span className="material-symbols-outlined text-primary text-2xl">location_on</span>
+                  <div>
+                    <p className="font-black text-lg">Casa Central</p>
+                    <p className="text-text-dark text-sm leading-relaxed">Av. del Libertador 14500, San Isidro, Buenos Aires</p>
                   </div>
                 </div>
+                <div className="flex items-center gap-4">
+                  <span className="material-symbols-outlined text-primary text-2xl">call</span>
+                  <div>
+                    <p className="text-text-dark text-xs font-bold uppercase tracking-widest">Llamanos gratis</p>
+                    <p className="font-black text-lg">0800-555-AUTO</p>
+                  </div>
+                </div>
+                <div className="pt-2">
+                  <button className="w-full bg-white/5 hover:bg-white/10 text-white font-bold py-3 rounded-xl border border-white/10 transition-colors text-sm">
+                    Ver todas las sucursales
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { HashRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import Vehicles from './pages/Vehicles';
@@ -8,6 +8,8 @@ import AdminDashboard from './pages/AdminDashboard';
 const Navbar: React.FC = () => {
   const location = useLocation();
   const isAdmin = location.pathname.startsWith('/admin');
+
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   if (isAdmin) return null;
 
@@ -39,15 +41,49 @@ const Navbar: React.FC = () => {
         </div>
         
         <div className="flex items-center gap-6">
-          <div className="hidden lg:flex items-center bg-charcoal-medium rounded-full px-5 py-2.5 gap-3 border border-charcoal-light focus-within:ring-2 focus-within:ring-primary transition-all">
-            <span className="material-symbols-outlined text-text-dark text-[22px]">search</span>
-            <input type="text" placeholder="Buscar vehículo..." className="bg-transparent border-none p-0 focus:ring-0 text-sm w-44 placeholder:text-text-dark" />
-          </div>
-          <button className="bg-primary hover:bg-red-700 text-white font-black py-2.5 px-6 rounded-full transition-all text-xs uppercase tracking-widest shadow-lg shadow-primary/20">
+          <button className="hidden sm:block bg-primary hover:bg-red-700 text-white font-black py-2.5 px-6 rounded-full transition-all text-xs uppercase tracking-widest shadow-lg shadow-primary/20">
             Vender mi auto
+          </button>
+          
+          <button 
+            className="md:hidden text-text-light p-2 hover:bg-charcoal-medium rounded-lg transition-colors"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            <span className="material-symbols-outlined text-3xl">
+              {isMobileMenuOpen ? 'close' : 'menu'}
+            </span>
           </button>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden absolute top-20 left-0 w-full bg-charcoal-dark border-b border-charcoal-light shadow-2xl animate-in slide-in-from-top-2">
+          <nav className="flex flex-col p-4">
+            {[
+              { label: 'Inicio', path: '/' },
+              { label: 'Vehículos', path: '/vehiculos' },
+              { label: 'Financiación', path: '#' },
+              { label: 'Contacto', path: '#' },
+              { label: 'Admin', path: '/admin' },
+            ].map(link => (
+              <Link 
+                key={link.label} 
+                to={link.path} 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={`py-4 px-4 text-sm font-bold tracking-wider uppercase border-b border-charcoal-medium last:border-0 hover:bg-charcoal-medium/50 rounded-lg transition-colors ${location.pathname === link.path ? 'text-primary' : 'text-text-light'}`}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <div className="pt-4 mt-2">
+              <button className="w-full bg-primary hover:bg-red-700 text-white font-black py-3 px-6 rounded-xl transition-all text-xs uppercase tracking-widest shadow-lg shadow-primary/20">
+                Vender mi auto
+              </button>
+            </div>
+          </nav>
+        </div>
+      )}
     </div>
   );
 };
